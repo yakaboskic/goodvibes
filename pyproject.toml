@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ['goodvibes']
+
+[project]
+name = "goodvibes"
+version = "0.0.1"
+description = "Codebase for the xTech Good Vibrations Challenge using Bayesian Inference."
+license = {text = "MIT License"}
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.scripts]

@@ -1,0 +1,3 @@
+notebook
+py7zr
+pandas
