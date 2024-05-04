@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<info 
+  producer="Sensor version 80 UPDATE 2, compiled at Mar  1 2023 10:38:56"
+  dataFile="Node129-Ch1-26-2023_04_11_16_00_00-9866Hz.wav"
+  nodeId="129"
+  uptimeSec="7891"
+  hwConfig="575"
+  swMode="8000"
+  status="42"
+  sensorTimeSec="1681228799"
+  sensorTime="2023-04-11T15:59:59.722"
+  sampleRateNominal="9868"
+  sampleRateActual="9866.440"
+  lat="38.40927750"
+  lon="-77.10401583"
+  altAboveGeoidMeters="7.8"
+  geoidalSeparationMeters="0.0"
+  gpsFixTimeSec="1681225695"
+  gpsFixTime="2023-04-11T15:08:15.000"
+  numSats="11"
+/>
