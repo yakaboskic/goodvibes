@@ -105,3 +105,117 @@ def organize_signatures(signature_path):
                             ]
                             data.append(row)
     return pd.DataFrame.from_records(data, columns=signature_header)
+
+def parse_nmea_sentence(sentence, mode='GPGGA'):
+    """
+    Parse an NMEA sentence and return a dictionary of the data. Will only parse $GPGGA sentences.
+    
+    Explanation of the Sentences:
+    $GPGGA - Global Positioning System Fix Data. This includes:
+        Time
+        Latitude and longitude
+        Fix quality (e.g., GPS fix, DGPS fix)
+        Number of satellites being tracked
+        Horizontal dilution of precision
+        Altitude
+        Geoidal separation
+    $GPRMC - Recommended Minimum Specific GPS/Transit Data. This includes:
+        Time
+        Status (Active or Void)
+        Latitude and longitude
+        Speed over ground
+        Course over ground
+        Date
+        Mode
+
+    :param sentence: str, NMEA sentence
+    :param mode: str, NMEA mode (GPGGA, GPRMC)
+    :return: dict
+    """
+    parts = sentence.split(',')
+    try:
+        if sentence.startswith('$GPGGA') and mode == 'GPGGA':
+            time = datetime.datetime.strptime(parts[1], '%H%M%S.%f')
+            latitude = float(parts[2])/100
+            lat_dir = parts[3]
+            longitude = float(parts[4])/100
+            long_dir = parts[5]
+            return {
+                'time': time.time(),
+                'latitude': latitude,
+                'lat_dir': lat_dir,
+                'longitude': longitude,
+                'long_dir': long_dir
+                }
+        elif sentence.startswith('$GPRMC') and mode == 'GPRMC':
+            time = datetime.datetime.strptime(parts[1], '%H%M%S.%f')
+            latitude = float(parts[3])/100
+            lat_dir = parts[4]
+            longitude = float(parts[5])/100
+            long_dir = parts[6]
+            speed = float(parts[7])
+            course = float(parts[8])
+            date = datetime.datetime.strptime(parts[9], '%d%m%y')
+            return {
+                'time': time.time(),
+                'latitude': latitude,
+                'lat_dir': lat_dir,
+                'longitude': longitude,
+                'long_dir': long_dir,
+                'speed': speed,
+                'course': course,
+                'date': date.date(),
+                }
+    except Exception as e:
+        print(f'Error parsing NMEA sentence: {e}')
+        pass
+    return None
+
+def convert_to_decimal(degrees_minutes, direction):
+    """
+    Convert latitude and longitude from degrees and minutes to decimal degrees.
+    :param degrees_minutes: float, latitude or longitude in degrees and minutes
+    :param direction: str, direction (N, S, E, W)
+    :return: float, decimal degrees
+    """
+    degrees = int(degrees_minutes)
+    minutes = (degrees_minutes - degrees) * 100
+    decimal_degrees = degrees + minutes / 60
+    if direction in ['S', 'W']:
+        decimal_degrees *= -1
+    return decimal_degrees
+
+def parse_nmea_data(data):
+    """
+    Parse NMEA data and return a DataFrame of the parsed data.
+    :param data: str, NMEA data
+    :return: pd.DataFrame
+    """
+    parsed_data_gpgga = [parse_nmea_sentence(line, 'GPGGA') for line in data if line.startswith('$GPGGA')]
+    parsed_data_gprmc = [parse_nmea_sentence(line, 'GPRMC') for line in data if line.startswith('$GPRMC')]
+    # Remove any None values
+    parsed_data_gpgga = [d for d in parsed_data_gpgga if d]
+    parsed_data_gprmc = [d for d in parsed_data_gprmc if d]
+    # Merge the two datasets
+    if len(parsed_data_gpgga) > 0 and len(parsed_data_gprmc) > 0:
+        time_gpgga = {gpgga['time']: gpgga for gpgga in parsed_data_gpgga}
+        time_gprmc = {gprmc['time']: gprmc for gprmc in parsed_data_gprmc}
+        parsed_data = []
+        for time in time_gpgga:
+            if time in time_gprmc:
+                parsed_data.append({**time_gpgga[time], **time_gprmc[time]})
+            else:
+                parsed_data.append(time_gpgga[time])
+        for time in time_gprmc:
+            if time not in time_gpgga:
+                parsed_data.append(time_gprmc[time])
+    elif len(parsed_data_gpgga) > 0:
+        parsed_data = parsed_data_gpgga
+    elif len(parsed_data_gprmc) > 0:
+        parsed_data = parsed_data_gprmc
+    # Create DataFrame
+    df = pd.DataFrame(parsed_data)
+    # Convert latitude and longitude to decimal degrees
+    df['latitude'] = df.apply(lambda row: convert_to_decimal(row['latitude'], row['lat_dir']), axis=1)
+    df['longitude'] = df.apply(lambda row: convert_to_decimal(row['longitude'], row['long_dir']), axis=1)
+    return df.sort_values(['date', 'time'])
