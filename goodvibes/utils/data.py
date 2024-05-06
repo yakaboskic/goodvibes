@@ -259,7 +259,7 @@ def read_gps_log(path, start_date=None, end_date=None):
     gps_log = pd.read_csv(path)
     gps_log['datetime'] = pd.to_datetime(gps_log['date'] + ' ' + gps_log['time'], format='mixed', yearfirst=True)
     gps_log['date'] = pd.to_datetime(gps_log['date'], format='%Y-%m-%d')
-    gps_log['time'] = pd.to_datetime(gps_log['time'], format='%H:%M:%S')
+    gps_log['time'] = pd.to_datetime(gps_log['time'], format='mixed')
     if start_date and end_date:
         gps_log = gps_log[(gps_log['datetime'] >= start_date) & (gps_log['datetime'] <= end_date)]
     elif start_date:
@@ -267,3 +267,13 @@ def read_gps_log(path, start_date=None, end_date=None):
     elif end_date:
         gps_log = gps_log[gps_log['datetime'] <= end_date]
     return gps_log
+
+def read_emplacement_information(path):
+    """
+    Read the emplacement log from a CSV file.
+    :param path: str, path to the CSV file
+    :return: pd.DataFrame
+    """
+    emplacement_log = pd.read_csv(path)
+    emplacement_log['date'] = pd.to_datetime(emplacement_log['date'], format='%m/%d/%Y')
+    return emplacement_log
