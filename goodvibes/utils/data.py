@@ -219,3 +219,51 @@ def parse_nmea_data(data):
     df['latitude'] = df.apply(lambda row: convert_to_decimal(row['latitude'], row['lat_dir']), axis=1)
     df['longitude'] = df.apply(lambda row: convert_to_decimal(row['longitude'], row['long_dir']), axis=1)
     return df.sort_values(['date', 'time'])
+
+def read_signature_information(path):
+    """
+    Read the signature information from a CSV file.
+    :param path: str, path to the CSV file
+    :return: pd.DataFrame
+    """
+    sig_info = pd.read_csv(path)
+    sig_info['datetime'] = pd.to_datetime(sig_info['date'] + ' ' + sig_info['time'], format='%Y-%m-%d %H:%M:%S')
+    sig_info['date'] = pd.to_datetime(sig_info['date'], format='%Y-%m-%d')
+    sig_info['time'] = pd.to_datetime(sig_info['time'], format='%H:%M:%S')
+    sig_info['sensor-time'] = pd.to_datetime(sig_info['sensor-time'])
+    sig_info['gps-fix-time'] = pd.to_datetime(sig_info['gps-fix-time'])
+    return sig_info
+
+
+def read_target_run_log(path):
+    """
+    Read the target run log from a CSV file.
+    :param path: str, path to the CSV file
+    :return: pd.DataFrame
+    """
+    run_info = pd.read_csv(path)
+    run_info['stop-datetime'] = pd.to_datetime(run_info['date'] + ' ' + run_info['stop-time-utc'], format='mixed', yearfirst=True)
+    run_info['date'] = pd.to_datetime(run_info['date'])
+    run_info['start-time-utc'] = pd.to_datetime(run_info['start-time-utc'], format='mixed').apply(lambda value: value.time()) 
+    run_info['stop-time-utc'] = pd.to_datetime(run_info['stop-time-utc'], format='mixed').apply(lambda value: value.time()) 
+    return run_info
+
+def read_gps_log(path, start_date=None, end_date=None):
+    """
+    Read the GPS log from a CSV file.
+    :param path: str, path to the CSV file
+    :param start_date: datetime obj, start date and time
+    :param end_date: datetime obj, end date and time
+    :return: pd.DataFrame
+    """
+    gps_log = pd.read_csv(path)
+    gps_log['datetime'] = pd.to_datetime(gps_log['date'] + ' ' + gps_log['time'], format='mixed', yearfirst=True)
+    gps_log['date'] = pd.to_datetime(gps_log['date'], format='%Y-%m-%d')
+    gps_log['time'] = pd.to_datetime(gps_log['time'], format='%H:%M:%S')
+    if start_date and end_date:
+        gps_log = gps_log[(gps_log['datetime'] >= start_date) & (gps_log['datetime'] <= end_date)]
+    elif start_date:
+        gps_log = gps_log[gps_log['datetime'] >= start_date]
+    elif end_date:
+        gps_log = gps_log[gps_log['datetime'] <= end_date]
+    return gps_log
