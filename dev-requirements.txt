@@ -2,3 +2,5 @@ notebook
 py7zr
 pandas
 matplotlib
+tqdm
+scikit-learn

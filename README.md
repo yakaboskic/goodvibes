@@ -29,3 +29,11 @@ $ pip3 install -r dev-requirements.txt
 # Notebooks
 We have supplied a couple useful notebooks listed below:
 - **data_exploration.pynb**: This notebook is our first hack at visualizing the data. 
+
+# Remarks and Notes
+In this section we describe a number of complications that have arose throughout development. 
+
+## Inconsistent Data Labeling
+1. No wav data for the corresponding Eglin XML file: Node81-Ch1-21-2023_03_16_13_30_00-9866Hz.wav.xml
+1. Solicitation Dataset 1 does not have consistent dates for Node 124, and therefore was not considered. 
+1. Node 129 in BRFP also had inconsistent dates, changed signatures on 4-10-2023 to 4-12-2023. 

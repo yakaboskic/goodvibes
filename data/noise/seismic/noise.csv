@@ -1,0 +1,192 @@
+filename,node-id,location,date,start,stop,rate,mode
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-12,2023-04-12 14:10:00,2023-04-12 14:13:46,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-12,2023-04-12 14:14:10,2023-04-12 14:17:37,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-12,2023-04-12 14:17:50,2023-04-12 14:18:52,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-12,2023-04-12 14:19:06,2023-04-12 14:25:38,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-12,2023-04-12 14:25:55,2023-04-12 14:27:31,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-12,2023-04-12 14:27:52,2023-04-12 14:44:26,1605,seismic
+node-131_location-bprf_noise-6.wav,131,bprf,2023-04-12,2023-04-12 14:44:38,2023-04-12 14:45:36,1605,seismic
+node-131_location-bprf_noise-7.wav,131,bprf,2023-04-12,2023-04-12 14:45:49,2023-04-12 14:56:47,1605,seismic
+node-131_location-bprf_noise-8.wav,131,bprf,2023-04-12,2023-04-12 14:57:00,2023-04-12 14:57:50,1605,seismic
+node-131_location-bprf_noise-9.wav,131,bprf,2023-04-12,2023-04-12 14:58:03,2023-04-12 16:07:26,1605,seismic
+node-131_location-bprf_noise-10.wav,131,bprf,2023-04-12,2023-04-12 16:07:38,2023-04-12 16:08:24,1605,seismic
+node-131_location-bprf_noise-11.wav,131,bprf,2023-04-12,2023-04-12 16:08:36,2023-04-12 16:09:42,1605,seismic
+node-131_location-bprf_noise-12.wav,131,bprf,2023-04-12,2023-04-12 16:09:51,2023-04-12 16:10:30,1605,seismic
+node-131_location-bprf_noise-13.wav,131,bprf,2023-04-12,2023-04-12 16:10:39,2023-04-12 16:16:16,1605,seismic
+node-131_location-bprf_noise-14.wav,131,bprf,2023-04-12,2023-04-12 16:16:32,2023-04-12 16:18:09,1605,seismic
+node-131_location-bprf_noise-15.wav,131,bprf,2023-04-12,2023-04-12 16:18:30,2023-04-12 17:25:31,1605,seismic
+node-131_location-bprf_noise-16.wav,131,bprf,2023-04-12,2023-04-12 17:25:45,-1,1605,seismic
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-12,2023-04-12 14:10:00,2023-04-12 14:13:46,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-12,2023-04-12 14:14:10,2023-04-12 14:17:37,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-12,2023-04-12 14:17:50,2023-04-12 14:18:52,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-12,2023-04-12 14:19:06,2023-04-12 14:25:38,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-12,2023-04-12 14:25:55,2023-04-12 14:27:31,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-12,2023-04-12 14:27:52,2023-04-12 14:44:26,1605,seismic
+node-131_location-bprf_noise-6.wav,131,bprf,2023-04-12,2023-04-12 14:44:38,2023-04-12 14:45:36,1605,seismic
+node-131_location-bprf_noise-7.wav,131,bprf,2023-04-12,2023-04-12 14:45:49,2023-04-12 14:56:47,1605,seismic
+node-131_location-bprf_noise-8.wav,131,bprf,2023-04-12,2023-04-12 14:57:00,2023-04-12 14:57:50,1605,seismic
+node-131_location-bprf_noise-9.wav,131,bprf,2023-04-12,2023-04-12 14:58:03,2023-04-12 16:07:26,1605,seismic
+node-131_location-bprf_noise-10.wav,131,bprf,2023-04-12,2023-04-12 16:07:38,2023-04-12 16:08:24,1605,seismic
+node-131_location-bprf_noise-11.wav,131,bprf,2023-04-12,2023-04-12 16:08:36,2023-04-12 16:09:42,1605,seismic
+node-131_location-bprf_noise-12.wav,131,bprf,2023-04-12,2023-04-12 16:09:51,2023-04-12 16:10:30,1605,seismic
+node-131_location-bprf_noise-13.wav,131,bprf,2023-04-12,2023-04-12 16:10:39,2023-04-12 16:16:16,1605,seismic
+node-131_location-bprf_noise-14.wav,131,bprf,2023-04-12,2023-04-12 16:16:32,2023-04-12 16:18:09,1605,seismic
+node-131_location-bprf_noise-15.wav,131,bprf,2023-04-12,2023-04-12 16:18:30,2023-04-12 17:25:31,1605,seismic
+node-131_location-bprf_noise-16.wav,131,bprf,2023-04-12,2023-04-12 17:25:45,-1,1605,seismic
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-10,2023-04-10 15:30:00,2023-04-10 15:35:17,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-10,2023-04-10 15:35:31,2023-04-10 15:37:32,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-10,2023-04-10 15:37:47,2023-04-10 18:30:41,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-10,2023-04-10 18:30:58,2023-04-10 18:33:04,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-10,2023-04-10 18:33:20,2023-04-10 18:34:46,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-10,2023-04-10 18:34:56,-1,1605,seismic
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-10,2023-04-10 15:30:00,2023-04-10 15:35:17,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-10,2023-04-10 15:35:31,2023-04-10 15:37:32,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-10,2023-04-10 15:37:47,2023-04-10 18:30:41,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-10,2023-04-10 18:30:58,2023-04-10 18:33:04,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-10,2023-04-10 18:33:20,2023-04-10 18:34:46,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-10,2023-04-10 18:34:56,-1,1605,seismic
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-11,2023-04-11 15:20:00,2023-04-11 15:21:47,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-11,2023-04-11 16:49:29,-1,1605,seismic
+node-131_location-bprf_noise-0.wav,131,bprf,2023-04-11,2023-04-11 15:20:00,2023-04-11 15:21:47,1605,seismic
+node-131_location-bprf_noise-1.wav,131,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1605,seismic
+node-131_location-bprf_noise-2.wav,131,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1605,seismic
+node-131_location-bprf_noise-3.wav,131,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1605,seismic
+node-131_location-bprf_noise-4.wav,131,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1605,seismic
+node-131_location-bprf_noise-5.wav,131,bprf,2023-04-11,2023-04-11 16:49:29,-1,1605,seismic
+node-129_location-bprf_noise-0.wav,129,bprf,2023-04-12,2023-04-12 14:10:00,2023-04-12 14:13:46,1609,seismic
+node-129_location-bprf_noise-1.wav,129,bprf,2023-04-12,2023-04-12 14:14:10,2023-04-12 14:17:37,1609,seismic
+node-129_location-bprf_noise-2.wav,129,bprf,2023-04-12,2023-04-12 14:17:50,2023-04-12 14:18:52,1609,seismic
+node-129_location-bprf_noise-3.wav,129,bprf,2023-04-12,2023-04-12 14:19:06,2023-04-12 14:25:38,1609,seismic
+node-129_location-bprf_noise-4.wav,129,bprf,2023-04-12,2023-04-12 14:25:55,2023-04-12 14:27:31,1609,seismic
+node-129_location-bprf_noise-5.wav,129,bprf,2023-04-12,2023-04-12 14:27:52,2023-04-12 14:44:26,1609,seismic
+node-129_location-bprf_noise-6.wav,129,bprf,2023-04-12,2023-04-12 14:44:38,2023-04-12 14:45:36,1609,seismic
+node-129_location-bprf_noise-7.wav,129,bprf,2023-04-12,2023-04-12 14:45:49,2023-04-12 14:56:47,1609,seismic
+node-129_location-bprf_noise-8.wav,129,bprf,2023-04-12,2023-04-12 14:57:00,2023-04-12 14:57:50,1609,seismic
+node-129_location-bprf_noise-9.wav,129,bprf,2023-04-12,2023-04-12 14:58:03,2023-04-12 16:07:26,1609,seismic
+node-129_location-bprf_noise-10.wav,129,bprf,2023-04-12,2023-04-12 16:07:38,2023-04-12 16:08:24,1609,seismic
+node-129_location-bprf_noise-11.wav,129,bprf,2023-04-12,2023-04-12 16:08:36,2023-04-12 16:09:42,1609,seismic
+node-129_location-bprf_noise-12.wav,129,bprf,2023-04-12,2023-04-12 16:09:51,2023-04-12 16:10:30,1609,seismic
+node-129_location-bprf_noise-13.wav,129,bprf,2023-04-12,2023-04-12 16:10:39,2023-04-12 16:16:16,1609,seismic
+node-129_location-bprf_noise-14.wav,129,bprf,2023-04-12,2023-04-12 16:16:32,2023-04-12 16:18:09,1609,seismic
+node-129_location-bprf_noise-15.wav,129,bprf,2023-04-12,2023-04-12 16:18:30,2023-04-12 17:25:31,1609,seismic
+node-129_location-bprf_noise-16.wav,129,bprf,2023-04-12,2023-04-12 17:25:45,-1,1609,seismic
+node-129_location-bprf_noise-0.wav,129,bprf,2023-04-12,2023-04-12 14:10:00,2023-04-12 14:13:46,1609,seismic
+node-129_location-bprf_noise-1.wav,129,bprf,2023-04-12,2023-04-12 14:14:10,2023-04-12 14:17:37,1609,seismic
+node-129_location-bprf_noise-2.wav,129,bprf,2023-04-12,2023-04-12 14:17:50,2023-04-12 14:18:52,1609,seismic
+node-129_location-bprf_noise-3.wav,129,bprf,2023-04-12,2023-04-12 14:19:06,2023-04-12 14:25:38,1609,seismic
+node-129_location-bprf_noise-4.wav,129,bprf,2023-04-12,2023-04-12 14:25:55,2023-04-12 14:27:31,1609,seismic
+node-129_location-bprf_noise-5.wav,129,bprf,2023-04-12,2023-04-12 14:27:52,2023-04-12 14:44:26,1609,seismic
+node-129_location-bprf_noise-6.wav,129,bprf,2023-04-12,2023-04-12 14:44:38,2023-04-12 14:45:36,1609,seismic
+node-129_location-bprf_noise-7.wav,129,bprf,2023-04-12,2023-04-12 14:45:49,2023-04-12 14:56:47,1609,seismic
+node-129_location-bprf_noise-8.wav,129,bprf,2023-04-12,2023-04-12 14:57:00,2023-04-12 14:57:50,1609,seismic
+node-129_location-bprf_noise-9.wav,129,bprf,2023-04-12,2023-04-12 14:58:03,2023-04-12 16:07:26,1609,seismic
+node-129_location-bprf_noise-10.wav,129,bprf,2023-04-12,2023-04-12 16:07:38,2023-04-12 16:08:24,1609,seismic
+node-129_location-bprf_noise-11.wav,129,bprf,2023-04-12,2023-04-12 16:08:36,2023-04-12 16:09:42,1609,seismic
+node-129_location-bprf_noise-12.wav,129,bprf,2023-04-12,2023-04-12 16:09:51,2023-04-12 16:10:30,1609,seismic
+node-129_location-bprf_noise-13.wav,129,bprf,2023-04-12,2023-04-12 16:10:39,2023-04-12 16:16:16,1609,seismic
+node-129_location-bprf_noise-14.wav,129,bprf,2023-04-12,2023-04-12 16:16:32,2023-04-12 16:18:09,1609,seismic
+node-129_location-bprf_noise-15.wav,129,bprf,2023-04-12,2023-04-12 16:18:30,2023-04-12 17:25:31,1609,seismic
+node-129_location-bprf_noise-16.wav,129,bprf,2023-04-12,2023-04-12 17:25:45,-1,1609,seismic
+node-129_location-bprf_noise-0.wav,129,bprf,2023-04-11,2023-04-11 15:20:00,2023-04-11 15:21:47,1609,seismic
+node-129_location-bprf_noise-1.wav,129,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1609,seismic
+node-129_location-bprf_noise-2.wav,129,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1609,seismic
+node-129_location-bprf_noise-3.wav,129,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1609,seismic
+node-129_location-bprf_noise-4.wav,129,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1609,seismic
+node-129_location-bprf_noise-5.wav,129,bprf,2023-04-11,2023-04-11 16:49:29,-1,1609,seismic
+node-129_location-bprf_noise-0.wav,129,bprf,2023-04-11,2023-04-11 15:20:00,2023-04-11 15:21:47,1609,seismic
+node-129_location-bprf_noise-1.wav,129,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1609,seismic
+node-129_location-bprf_noise-2.wav,129,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1609,seismic
+node-129_location-bprf_noise-3.wav,129,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1609,seismic
+node-129_location-bprf_noise-4.wav,129,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1609,seismic
+node-129_location-bprf_noise-5.wav,129,bprf,2023-04-11,2023-04-11 16:49:29,-1,1609,seismic
+node-123_location-bprf_noise-0.wav,123,bprf,2023-04-10,2023-04-10 15:30:00,2023-04-10 15:35:17,1576,seismic
+node-123_location-bprf_noise-1.wav,123,bprf,2023-04-10,2023-04-10 15:35:31,2023-04-10 15:37:32,1576,seismic
+node-123_location-bprf_noise-2.wav,123,bprf,2023-04-10,2023-04-10 15:37:47,2023-04-10 18:30:41,1576,seismic
+node-123_location-bprf_noise-3.wav,123,bprf,2023-04-10,2023-04-10 18:30:58,2023-04-10 18:33:04,1576,seismic
+node-123_location-bprf_noise-4.wav,123,bprf,2023-04-10,2023-04-10 18:33:20,2023-04-10 18:34:46,1576,seismic
+node-123_location-bprf_noise-5.wav,123,bprf,2023-04-10,2023-04-10 18:34:56,-1,1576,seismic
+node-123_location-bprf_noise-0.wav,123,bprf,2023-04-10,2023-04-10 15:30:00,2023-04-10 15:35:17,1576,seismic
+node-123_location-bprf_noise-1.wav,123,bprf,2023-04-10,2023-04-10 15:35:31,2023-04-10 15:37:32,1576,seismic
+node-123_location-bprf_noise-2.wav,123,bprf,2023-04-10,2023-04-10 15:37:47,2023-04-10 18:30:41,1576,seismic
+node-123_location-bprf_noise-3.wav,123,bprf,2023-04-10,2023-04-10 18:30:58,2023-04-10 18:33:04,1576,seismic
+node-123_location-bprf_noise-4.wav,123,bprf,2023-04-10,2023-04-10 18:33:20,2023-04-10 18:34:46,1576,seismic
+node-123_location-bprf_noise-5.wav,123,bprf,2023-04-10,2023-04-10 18:34:56,-1,1576,seismic
+node-123_location-bprf_noise-0.wav,123,bprf,2023-04-11,2023-04-11 15:15:00,2023-04-11 15:21:47,1576,seismic
+node-123_location-bprf_noise-1.wav,123,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1576,seismic
+node-123_location-bprf_noise-2.wav,123,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1576,seismic
+node-123_location-bprf_noise-3.wav,123,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1576,seismic
+node-123_location-bprf_noise-4.wav,123,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1576,seismic
+node-123_location-bprf_noise-5.wav,123,bprf,2023-04-11,2023-04-11 16:49:29,-1,1576,seismic
+node-123_location-bprf_noise-0.wav,123,bprf,2023-04-11,2023-04-11 15:15:00,2023-04-11 15:21:47,1576,seismic
+node-123_location-bprf_noise-1.wav,123,bprf,2023-04-11,2023-04-11 15:22:11,2023-04-11 15:23:02,1576,seismic
+node-123_location-bprf_noise-2.wav,123,bprf,2023-04-11,2023-04-11 15:23:24,2023-04-11 16:01:13,1576,seismic
+node-123_location-bprf_noise-3.wav,123,bprf,2023-04-11,2023-04-11 16:01:40,2023-04-11 16:03:43,1576,seismic
+node-123_location-bprf_noise-4.wav,123,bprf,2023-04-11,2023-04-11 16:04:01,2023-04-11 16:49:11,1576,seismic
+node-123_location-bprf_noise-5.wav,123,bprf,2023-04-11,2023-04-11 16:49:29,-1,1576,seismic
+node-81_location-eglin_noise-0.wav,81,eglin,2023-03-16,2023-03-16 13:30:00,2023-03-16 13:32:07,1528,seismic
+node-81_location-eglin_noise-1.wav,81,eglin,2023-03-16,2023-03-16 13:37:45,-1,1528,seismic
+node-81_location-eglin_noise-0.wav,81,eglin,2023-03-16,2023-03-16 13:37:45,-1,1528,seismic
+node-80_location-eglin_noise-0.wav,80,eglin,2023-03-16,2023-03-16 13:30:00,2023-03-16 13:32:07,1550,seismic
+node-80_location-eglin_noise-1.wav,80,eglin,2023-03-16,2023-03-16 13:37:45,-1,1550,seismic
+node-80_location-eglin_noise-0.wav,80,eglin,2023-03-16,2023-03-16 13:30:00,2023-03-16 13:32:07,1550,seismic
+node-80_location-eglin_noise-1.wav,80,eglin,2023-03-16,2023-03-16 13:37:45,-1,1550,seismic
+node-81_location-cochise_noise-0.wav,81,cochise,2023-04-10,2023-04-10 20:25:00,2023-04-10 20:29:00,1528,seismic
+node-81_location-cochise_noise-1.wav,81,cochise,2023-04-10,2023-04-10 20:31:00,2023-04-10 20:33:00,1528,seismic
+node-81_location-cochise_noise-2.wav,81,cochise,2023-04-10,2023-04-10 20:35:00,2023-04-10 20:38:00,1528,seismic
+node-81_location-cochise_noise-3.wav,81,cochise,2023-04-10,2023-04-10 20:40:00,2023-04-10 20:41:00,1528,seismic
+node-81_location-cochise_noise-4.wav,81,cochise,2023-04-10,2023-04-10 20:43:00,2023-04-10 20:44:00,1528,seismic
+node-81_location-cochise_noise-5.wav,81,cochise,2023-04-10,2023-04-10 20:46:00,-1,1528,seismic
+node-81_location-cochise_noise-0.wav,81,cochise,2023-04-10,2023-04-10 20:25:00,2023-04-10 20:29:00,1528,seismic
+node-81_location-cochise_noise-1.wav,81,cochise,2023-04-10,2023-04-10 20:31:00,2023-04-10 20:33:00,1528,seismic
+node-81_location-cochise_noise-2.wav,81,cochise,2023-04-10,2023-04-10 20:35:00,2023-04-10 20:38:00,1528,seismic
+node-81_location-cochise_noise-3.wav,81,cochise,2023-04-10,2023-04-10 20:40:00,2023-04-10 20:41:00,1528,seismic
+node-81_location-cochise_noise-4.wav,81,cochise,2023-04-10,2023-04-10 20:43:00,2023-04-10 20:44:00,1528,seismic
+node-81_location-cochise_noise-5.wav,81,cochise,2023-04-10,2023-04-10 20:46:00,-1,1528,seismic
+node-81_location-cochise_noise-0.wav,81,cochise,2023-04-11,2023-04-11 16:50:00,2023-04-11 16:56:00,1528,seismic
+node-81_location-cochise_noise-1.wav,81,cochise,2023-04-11,2023-04-11 16:57:00,2023-04-11 16:59:00,1528,seismic
+node-81_location-cochise_noise-2.wav,81,cochise,2023-04-11,2023-04-11 17:00:00,2023-04-11 17:03:00,1528,seismic
+node-81_location-cochise_noise-3.wav,81,cochise,2023-04-11,2023-04-11 17:04:00,2023-04-11 17:06:00,1528,seismic
+node-81_location-cochise_noise-4.wav,81,cochise,2023-04-11,2023-04-11 17:07:00,2023-04-11 17:44:00,1528,seismic
+node-81_location-cochise_noise-5.wav,81,cochise,2023-04-11,2023-04-11 17:45:00,2023-04-11 17:46:00,1528,seismic
+node-81_location-cochise_noise-6.wav,81,cochise,2023-04-11,2023-04-11 17:47:00,2023-04-11 18:16:00,1528,seismic
+node-81_location-cochise_noise-7.wav,81,cochise,2023-04-11,2023-04-11 18:17:00,-1,1528,seismic
+node-81_location-cochise_noise-0.wav,81,cochise,2023-04-11,2023-04-11 16:50:00,2023-04-11 16:56:00,1528,seismic
+node-81_location-cochise_noise-1.wav,81,cochise,2023-04-11,2023-04-11 16:57:00,2023-04-11 16:59:00,1528,seismic
+node-81_location-cochise_noise-2.wav,81,cochise,2023-04-11,2023-04-11 17:00:00,2023-04-11 17:03:00,1528,seismic
+node-81_location-cochise_noise-3.wav,81,cochise,2023-04-11,2023-04-11 17:04:00,2023-04-11 17:06:00,1528,seismic
+node-81_location-cochise_noise-4.wav,81,cochise,2023-04-11,2023-04-11 17:07:00,2023-04-11 17:44:00,1528,seismic
+node-81_location-cochise_noise-5.wav,81,cochise,2023-04-11,2023-04-11 17:45:00,2023-04-11 17:46:00,1528,seismic
+node-81_location-cochise_noise-6.wav,81,cochise,2023-04-11,2023-04-11 17:47:00,2023-04-11 18:16:00,1528,seismic
+node-81_location-cochise_noise-7.wav,81,cochise,2023-04-11,2023-04-11 18:17:00,-1,1528,seismic
+node-121_location-cochise_noise-0.wav,121,cochise,2023-04-10,2023-04-10 20:25:00,2023-04-10 20:29:00,1572,seismic
+node-121_location-cochise_noise-1.wav,121,cochise,2023-04-10,2023-04-10 20:31:00,2023-04-10 20:33:00,1572,seismic
+node-121_location-cochise_noise-2.wav,121,cochise,2023-04-10,2023-04-10 20:35:00,2023-04-10 20:38:00,1572,seismic
+node-121_location-cochise_noise-3.wav,121,cochise,2023-04-10,2023-04-10 20:40:00,2023-04-10 20:41:00,1572,seismic
+node-121_location-cochise_noise-4.wav,121,cochise,2023-04-10,2023-04-10 20:43:00,2023-04-10 20:44:00,1572,seismic
+node-121_location-cochise_noise-5.wav,121,cochise,2023-04-10,2023-04-10 20:46:00,-1,1572,seismic
+node-121_location-cochise_noise-0.wav,121,cochise,2023-04-10,2023-04-10 20:25:00,2023-04-10 20:29:00,1572,seismic
+node-121_location-cochise_noise-1.wav,121,cochise,2023-04-10,2023-04-10 20:31:00,2023-04-10 20:33:00,1572,seismic
+node-121_location-cochise_noise-2.wav,121,cochise,2023-04-10,2023-04-10 20:35:00,2023-04-10 20:38:00,1572,seismic
+node-121_location-cochise_noise-3.wav,121,cochise,2023-04-10,2023-04-10 20:40:00,2023-04-10 20:41:00,1572,seismic
+node-121_location-cochise_noise-4.wav,121,cochise,2023-04-10,2023-04-10 20:43:00,2023-04-10 20:44:00,1572,seismic
+node-121_location-cochise_noise-5.wav,121,cochise,2023-04-10,2023-04-10 20:46:00,-1,1572,seismic
+node-121_location-cochise_noise-0.wav,121,cochise,2023-04-11,2023-04-11 16:50:00,2023-04-11 16:56:00,1572,seismic
+node-121_location-cochise_noise-1.wav,121,cochise,2023-04-11,2023-04-11 16:57:00,2023-04-11 16:59:00,1572,seismic
+node-121_location-cochise_noise-2.wav,121,cochise,2023-04-11,2023-04-11 17:00:00,2023-04-11 17:03:00,1572,seismic
+node-121_location-cochise_noise-3.wav,121,cochise,2023-04-11,2023-04-11 17:04:00,2023-04-11 17:06:00,1572,seismic
+node-121_location-cochise_noise-4.wav,121,cochise,2023-04-11,2023-04-11 17:07:00,2023-04-11 17:44:00,1572,seismic
+node-121_location-cochise_noise-5.wav,121,cochise,2023-04-11,2023-04-11 17:45:00,2023-04-11 17:46:00,1572,seismic
+node-121_location-cochise_noise-6.wav,121,cochise,2023-04-11,2023-04-11 17:47:00,2023-04-11 18:16:00,1572,seismic
+node-121_location-cochise_noise-7.wav,121,cochise,2023-04-11,2023-04-11 18:17:00,-1,1572,seismic
+node-121_location-cochise_noise-0.wav,121,cochise,2023-04-11,2023-04-11 16:50:00,2023-04-11 16:56:00,1572,seismic
+node-121_location-cochise_noise-1.wav,121,cochise,2023-04-11,2023-04-11 16:57:00,2023-04-11 16:59:00,1572,seismic
+node-121_location-cochise_noise-2.wav,121,cochise,2023-04-11,2023-04-11 17:00:00,2023-04-11 17:03:00,1572,seismic
+node-121_location-cochise_noise-3.wav,121,cochise,2023-04-11,2023-04-11 17:04:00,2023-04-11 17:06:00,1572,seismic
+node-121_location-cochise_noise-4.wav,121,cochise,2023-04-11,2023-04-11 17:07:00,2023-04-11 17:44:00,1572,seismic
+node-121_location-cochise_noise-5.wav,121,cochise,2023-04-11,2023-04-11 17:45:00,2023-04-11 17:46:00,1572,seismic
+node-121_location-cochise_noise-6.wav,121,cochise,2023-04-11,2023-04-11 17:47:00,2023-04-11 18:16:00,1572,seismic
+node-121_location-cochise_noise-7.wav,121,cochise,2023-04-11,2023-04-11 18:17:00,-1,1572,seismic

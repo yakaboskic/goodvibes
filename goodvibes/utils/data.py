@@ -4,6 +4,8 @@ import datetime
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+from geopy.distance import geodesic
+
 
 def process_sensor_xml(sensor_xml_path):
     """
@@ -59,6 +61,10 @@ def organize_signatures(signature_path):
                 if os.path.isdir(os.path.join(signature_path, node_dir, date_dir)):
                     for file in os.listdir(os.path.join(signature_path, node_dir, date_dir)):
                         if file.endswith('.xml'):
+                            # Ensure associated wav file exists by removing xml extension
+                            if not os.path.exists(os.path.join(signature_path, node_dir, date_dir, file[:-4])):
+                                print(f'No associated wav file for {file}')
+                                continue
                             # Process XML file
                             xml_path = os.path.join(signature_path, node_dir, date_dir, file)
                             _data = process_sensor_xml(xml_path)
@@ -228,8 +234,8 @@ def read_signature_information(path):
     """
     sig_info = pd.read_csv(path)
     sig_info['datetime'] = pd.to_datetime(sig_info['date'] + ' ' + sig_info['time'], format='%Y-%m-%d %H:%M:%S')
-    sig_info['date'] = pd.to_datetime(sig_info['date'], format='%Y-%m-%d')
-    sig_info['time'] = pd.to_datetime(sig_info['time'], format='%H:%M:%S')
+    sig_info['date'] = pd.to_datetime(sig_info['date'], format='%Y-%m-%d').apply(lambda value: value.date())
+    sig_info['time'] = pd.to_datetime(sig_info['time'], format='%H:%M:%S').apply(lambda value: value.time())
     sig_info['sensor-time'] = pd.to_datetime(sig_info['sensor-time'])
     sig_info['gps-fix-time'] = pd.to_datetime(sig_info['gps-fix-time'])
     return sig_info
@@ -243,7 +249,8 @@ def read_target_run_log(path):
     """
     run_info = pd.read_csv(path)
     run_info['stop-datetime'] = pd.to_datetime(run_info['date'] + ' ' + run_info['stop-time-utc'], format='mixed', yearfirst=True)
-    run_info['date'] = pd.to_datetime(run_info['date'])
+    run_info['start-datetime'] = pd.to_datetime(run_info['date'] + ' ' + run_info['start-time-utc'], format='mixed', yearfirst=True)
+    run_info['date'] = pd.to_datetime(run_info['date']).apply(lambda value: value.date())
     run_info['start-time-utc'] = pd.to_datetime(run_info['start-time-utc'], format='mixed').apply(lambda value: value.time()) 
     run_info['stop-time-utc'] = pd.to_datetime(run_info['stop-time-utc'], format='mixed').apply(lambda value: value.time()) 
     return run_info
@@ -277,3 +284,81 @@ def read_emplacement_information(path):
     emplacement_log = pd.read_csv(path)
     emplacement_log['date'] = pd.to_datetime(emplacement_log['date'], format='%m/%d/%Y')
     return emplacement_log
+
+def find_noise_times(sig_info, run_info):
+    """
+    Find the time ranges in which no vehicle is present.
+    :param sig_info: pd.DataFrame, signature information
+    :param run_info: pd.DataFrame, run information
+    :return: pd.DataFrame
+    """
+    # Collect time ranges for all nodes
+    subset = sig_info.drop_duplicates(subset=['location', 'date', 'node-id', 'mode'])
+    all_gaps = []
+    for _, row in subset.iterrows():
+        _sig_info = sig_info[
+            (sig_info['location'] == row['location']) &
+            (sig_info['date'] == row['date']) &
+            (sig_info['node-id'] == row['node-id']) &
+            (sig_info['mode'] == row['mode'])
+        ]
+        sig_start = _sig_info['datetime'].min()
+        sig_stop = _sig_info['datetime'].max()
+        _run_info = run_info[
+            (run_info['location'] == row['location']) &
+            (run_info['date'] == row['date'])
+        ].sort_values('start-datetime')
+        start = _run_info['start-datetime'].iloc[0]
+        stop = _run_info['stop-datetime'].iloc[0]
+        intervals = []
+        for _, run in _run_info.iterrows():
+            intervals.append((start, stop))
+            start = run['start-datetime']
+            stop = run['stop-datetime']
+        gaps = []
+        previous_stop = sig_start
+        for start, stop in intervals:
+            if previous_stop < start:
+                gaps.append((previous_stop, start))
+            previous_stop = stop
+        gaps.append((previous_stop, -1))
+        gaps_df = pd.DataFrame(gaps, columns=['start', 'stop'])
+        gaps_df['location'] = row['location']
+        gaps_df['date'] = row['date']
+        gaps_df['node-id'] = row['node-id']
+        gaps_df['mode'] = row['mode']
+        all_gaps.append(gaps_df)
+    return pd.concat(all_gaps)        
+
+def find_in_range_times(run_info, emplacement_info, delta, gps_log_path='data/position'):
+    """
+    Find the time range in which during a run the vehicle was within delta meters of an emplacement.
+    :param run_info: pd.DataFrame, run information
+    :param emplacement_info: pd.DataFrame, emplacement information
+    :param delta: float, distance in meters
+    :param gps_log_path: str, path to the GPS log files
+    :return: pd.DataFrame
+    """
+    data = []
+    header = ['run-idx', 'node-id', 'target-id', 'datetime-min', 'datetime-max', 'total-time', 'min-distance', 'max-distance']
+    for run_idx, run in run_info.iterrows():
+        placements = emplacement_info[emplacement_info['location'] == run['location']]
+        run_placements = placements[placements['date'] == run['date']]
+        gps_log_file = run['gps-log-file']
+        gps_data = read_gps_log(os.path.join(gps_log_path, gps_log_file), start_date=run['start-datetime'], end_date=run['stop-datetime'])
+        for node in run_placements['node-id'].unique():
+            node_placement = run_placements[run_placements['node-id'] == node]
+            gps_data['distance'] = gps_data.apply(lambda row: geodesic((row['latitude'], row['longitude']), (node_placement['lat'].iloc[0], node_placement['lon'].iloc[0])).meters, axis=1)
+            in_range_times = gps_data[gps_data['distance'] <= delta]['datetime']
+            _data = [
+                run_idx,
+                node,
+                run['target-id'],
+                in_range_times.min(),
+                in_range_times.max(),
+                in_range_times.max() - in_range_times.min(),
+                gps_data['distance'].min(),
+                gps_data['distance'].max(),
+            ]
+            data.append(_data)
+    return pd.DataFrame(data, columns=header)
