@@ -52,38 +52,49 @@ def load_acoustic_wav_for_map(filename, label):
 def load_seismic_wav_for_map(filename, label):
     return load_wav_mono(filename, SR_S), label
 
+def load_wav_for_map(filename_a, filename_s, label):
+    print(filename_a)
+    print(filename_s)
+    return load_wav_mono(filename_a, SR_A), load_wav_mono(filename_s, SR_S), label
 
 def run(args):
     # Load training csv
     df, class_weights = build_training_csv(args)
-    print(class_weights)
 
-    # Acoustic Dataset
+    # # Acoustic Dataset
+    # df_acoustic = df[df['mode'] == 'acoustic']
+    # dataset_acoustic = tf.data.Dataset.from_tensor_slices((df_acoustic['filename'], df_acoustic['label']))
+    # dataset_acoustic = dataset_acoustic.map(load_acoustic_wav_for_map)
+    # # Seismic Dataset
+    # df_seismic = df[df['mode'] == 'seismic']
+    # dataset_seismic = tf.data.Dataset.from_tensor_slices((df_seismic['filename'], df_seismic['label']))
+    # dataset_seismic = dataset_seismic.map(load_seismic_wav_for_map)
     df_acoustic = df[df['mode'] == 'acoustic']
-    dataset_acoustic = tf.data.Dataset.from_tensor_slices((df_acoustic['filename'], df_acoustic['label']))
-    dataset_acoustic = dataset_acoustic.map(load_acoustic_wav_for_map)
-    # Seismic Dataset
     df_seismic = df[df['mode'] == 'seismic']
-    dataset_seismic = tf.data.Dataset.from_tensor_slices((df_seismic['filename'], df_seismic['label']))
-    dataset_seismic = dataset_seismic.map(load_seismic_wav_for_map)
+    dataset = tf.data.Dataset.from_tensor_slices((df_acoustic['filename'], df_seismic['filename'], df_acoustic['label']))
+    dataset = dataset.map(load_wav_for_map)
 
     # Load the model.
     model = hub.load('https://www.kaggle.com/models/google/yamnet/TensorFlow2/yamnet/1')
     
-    def extract_embedding(wav_data, label):
-        scores, embeddings, spectrogram = model(wav_data)
+    def extract_embedding(wav_data_a, wav_data_s, label):
+        _, embeddings_a, _ = model(wav_data_a)
+        _, embeddings_s, _ = model(wav_data_s)
+        print(embeddings_a.shape)
+        print(embeddings_s.shape)
+        embeddings = tf.concat([embeddings_a, embeddings_s], axis=1)
         num_embeddings = tf.shape(embeddings)[0]
         #label_onehot = tf.one_hot(label, 2)
         return (embeddings, tf.repeat(label, num_embeddings))
     
     # Extract embeddings
-    dataset_acoustic_embeddings = dataset_acoustic.map(extract_embedding).unbatch().shuffle(df_acoustic.shape[0])
-    dataset_seismic_embeddings = dataset_seismic.map(extract_embedding).unbatch().shuffle(df_seismic.shape[0])
+    dataset_embeddings = dataset.map(extract_embedding).unbatch().shuffle(df_acoustic.shape[0])
+    print(dataset_embeddings.element_spec)
 
 
     # Create fine tuning model for acoustic and seismic data
     ft_model_acoustic = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(1024,), dtype=tf.float32, name='input_embedding'),
+        tf.keras.layers.Input(shape=(1024*2,), dtype=tf.float32, name='input_embedding'),
         tf.keras.layers.Dense(512, activation='relu'),
         tf.keras.layers.Dense(1),
     ],
@@ -99,7 +110,7 @@ def run(args):
     )
     callbacks = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3, restore_best_weights=True)
     history = ft_model_acoustic.fit(
-        dataset_acoustic_embeddings.batch(32),
+        dataset_embeddings.batch(32),
         epochs=20,
         callbacks=[callbacks],
         #class_weight=class_weights
