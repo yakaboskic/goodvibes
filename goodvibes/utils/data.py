@@ -282,7 +282,7 @@ def read_emplacement_information(path):
     :return: pd.DataFrame
     """
     emplacement_log = pd.read_csv(path)
-    emplacement_log['date'] = pd.to_datetime(emplacement_log['date'], format='%m/%d/%Y')
+    emplacement_log['date'] = pd.to_datetime(emplacement_log['date'], format='%m/%d/%Y').apply(lambda value: value.date())
     return emplacement_log
 
 def find_noise_times(sig_info, run_info):
