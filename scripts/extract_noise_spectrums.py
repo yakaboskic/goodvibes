@@ -17,14 +17,16 @@ def build_noise_target_datasets(args):
         if len(split) != 7:
             continue
         _, node_id, _, location_name, _, idx, _ = split
-        _,  data = wavfile.read(os.path.join(args.path_to_noise_dir, 'acoustic', f))
+        rate,  data = wavfile.read(os.path.join(args.path_to_noise_dir, 'acoustic', f))
+        data = data[:args.max_length_sec*rate]
         np.save(f'{args.output_folder}/{location_name}.{idx}.{node_id}.acoustic.npy', data)
     for f in os.listdir(os.path.join(args.path_to_noise_dir, 'seismic')):
         split = re.split(r'[_.-]+', f)
         if len(split) != 7:
             continue
         _, node_id, _, location_name, _, idx, _ = split
-        _, data = wavfile.read(os.path.join(args.path_to_noise_dir, 'seismic', f))
+        rate, data = wavfile.read(os.path.join(args.path_to_noise_dir, 'seismic', f))
+        data = data[:args.max_length_sec*rate]
         np.save(f'{args.output_folder}/{location_name}.{idx}.{node_id}.seismic.npy', data)
 
 def run(args):
@@ -63,6 +65,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--path_to_noise_dir', type=str, help='Path to the noise directory', default='data/noise')
     parser.add_argument('-o', '--output_folder', type=str, help='Path to the output folder', default='data/targets')
     parser.add_argument('-t', '--path_to_target_dir', type=str, help='Path to the target directory', default='data/targets/noise')
+    parser.add_argument('-m', '--max_length_sec', type=int, help='Max length in seconds', default=5)
     args = parser.parse_args()
     #build_noise_target_datasets(args)
     run(args)

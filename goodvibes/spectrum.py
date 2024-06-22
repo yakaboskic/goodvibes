@@ -1,3 +1,4 @@
+import pickle
 import os, sys
 import numpy as np
 from collections import defaultdict
@@ -20,6 +21,51 @@ def blockify(data, frame_size, hop_size):
     :return: np.array
     """
     return [data[i:i+frame_size] for i in range(0, len(data), hop_size)]
+
+def pipeline_data(acoustic_data, seismic_data):
+    """
+    This function is the main pipeline for the spectrum analysis.
+    """
+    # Process acoustic data
+    acoustic_spectras = []
+    data = normalize_amplitudes(acoustic_data)
+    blocks = blockify(data, 2048, 1776)
+    for frame in blocks:
+        # Apply the window to the frame
+        windowed_frame = frame * np.hamming(len(frame))
+        # Compute the FFT
+        spectrum = np.fft.fft(windowed_frame)
+        # Compute the magnitude of the spectrum
+        magnitude = np.abs(spectrum)
+        # Compute the power of the spectrum
+        power = np.square(magnitude)[0:1024]
+        if len(power) < 1024:
+            continue
+        # Normalize each frame to unit power
+        power = power / np.sum(power)
+        acoustic_spectras.append(power)
+
+    # Process seismic data
+    seismic_spectras = []
+    data = normalize_amplitudes(seismic_data)
+    blocks = blockify(data, 512, 448)
+    spectras = []
+    for frame in blocks:
+        # Apply the window to the frame
+        windowed_frame = frame * np.hamming(len(frame))
+        # Compute the FFT
+        spectrum = np.fft.fft(windowed_frame)
+        # Compute the magnitude of the spectrum
+        magnitude = np.abs(spectrum)
+        # Compute the power of the spectrum
+        power = np.square(magnitude)[0:512//2]
+        if len(power) < 512//2:
+            continue
+        # Normalize each frame to unit power
+        power = power / np.sum(power)
+        seismic_spectras.append(power)
+    return acoustic_spectras, seismic_spectras
+
 
 def pipeline(path_to_target_dir):
     """
@@ -171,7 +217,7 @@ def project(spectrum, eigenvectors, avg_spectras):
             eigvec_k = np.expand_dims(eigvec_k, axis=0)
             proj_k = np.dot(norm_spectrum.T, eigvec_k)
             wproj_k = np.squeeze(np.dot(proj_k, eigvec_k.T), axis=-1)
-            remainder += wproj_k
+            remainder = sum([remainder, wproj_k])
         remainder = np.expand_dims(remainder, axis=0)
         # Calculate residual
         residual = norm_spectrum - remainder
@@ -206,13 +252,13 @@ def load_model(
     :param path_to_model: Path to the model dir.
     """
     with open(os.path.join(path_to_model, 'acoustic_eigvectors.pk'), 'rb') as f:
-        acoustic_eigvectors = np.load(f)
+        acoustic_eigvectors = pickle.load(f)
     with open(os.path.join(path_to_model, 'seismic_eigvectors.pk'), 'rb') as f:
-        seismic_eigvectors = np.load(f)
+        seismic_eigvectors = pickle.load(f)
     with open(os.path.join(path_to_model, 'acoustic_spectras_avg.pk'), 'rb') as f:
-        acoustic_spectras_avg = np.load(f)
+        acoustic_spectras_avg = pickle.load(f)
     with open(os.path.join(path_to_model, 'seismic_spectras_avg.pk'), 'rb') as f:
-        seismic_spectras_avg = np.load(f)
+        seismic_spectras_avg = pickle.load(f)
     return {
         'acoustic_eigvectors': acoustic_eigvectors,
         'seismic_eigvectors': seismic_eigvectors,
