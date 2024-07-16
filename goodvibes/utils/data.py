@@ -328,7 +328,42 @@ def find_noise_times(sig_info, run_info):
         gaps_df['node-id'] = row['node-id']
         gaps_df['mode'] = row['mode']
         all_gaps.append(gaps_df)
-    return pd.concat(all_gaps)        
+    return pd.concat(all_gaps)
+
+def get_position_from_signature_file(
+        run_info,
+        emplacement_info,
+        sig_info,
+        wav_path,
+        start_datetime,
+        end_datetime, 
+        gps_log_path='data/position',
+        ):
+    """
+    Returns the positions of target and distance from emplacements from a given wav file based on training datasets provided.
+    :param run_info: pd.DataFrame, run information
+    :param emplacement_info: pd.DataFrame, emplacement information
+    :param wav_file: Path to wav file
+    :param gps_log_path: str, path to the GPS log files
+    :return: pd.DataFrame
+    """
+    # Separate file from directory structure
+    filename = os.path.basename(wav_path)
+    # Get the signature information
+    sigrow = sig_info[sig_info['data-file'] == filename]
+    # Get possible run information
+    runs = run_info[
+        (run_info['date'] == sigrow['date']) & 
+        (run_info['location'] == sigrow['location'])
+        ]
+    placement = emplacement_info[
+        (emplacement_info['date'] == sigrow['date']) &
+        (emplacement_info['location'] == sigrow['location']) & 
+        (emplacement_info['node-id'] == sigrow['node-id'])
+    gps_logs = runs['gps-log-file'].unique()
+    gps_data = read_gps_log(os.path.join(gps_log_path, gps_logs[0]), start_date=start_datetime, end_date=end_datetime)
+    gps_data['distance'] = gps_data.apply(lambda row: geodesic((row['latitude'], row['longitude']), (placement['lat'].iloc[0], placement['lon'].iloc[0])).meters, axis=1)
+    return gps_data
 
 def find_in_range_times(run_info, emplacement_info, delta, gps_log_path='data/position'):
     """

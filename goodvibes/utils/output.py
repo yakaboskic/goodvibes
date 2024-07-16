@@ -10,6 +10,7 @@ from tqdm import tqdm
 
 from goodvibes.utils.gv_datatypes import *
 from goodvibes.spectrum import *
+from goodvibes.utils.data import get_position_from_signature_file
 
 def read_data_in_chunks(filename_acoustic : str, filename_seismic: str, chunk_duration_ms=1000):
     # Open the WAV file
@@ -42,6 +43,56 @@ def load_models(path_to_eig_model: str):
     # Load the models from disk
     eigmodel = load_model(path_to_eig_model)
     return eigmodel
+
+def process_frame_test(
+        start_datetime: datetime,
+        end_datetime: datetime,
+        acoustic_data: array,
+        seismic_data: array,
+        eigmodel,
+        detection_model,
+        classifer_model,
+        labels,
+        filename_acoustic,
+        run_info,
+        emplacement_info,
+        sig_info,
+        gps_log_path,
+        ):
+    a, s = pipeline_data(acoustic_data, seismic_data)
+    # Produce eigen residuals for all classes
+    Xa = []
+    for spectrum in a:
+        proj = project(spectrum, eigmodel['acoustic_eigvectors'], eigmodel['acoustic_spectras_avg'])
+        Xa.append(np.array([proj[key] for key in labels]))
+    Xs = []
+    for spectrum in s:
+        proj = project(spectrum, eigmodel['seismic_eigvectors'], eigmodel['seismic_spectras_avg'])
+        Xs.append(np.array([proj[key] for key in labels]))
+    Xa, Xs = np.array(Xa), np.array(Xs)
+    # Predict detection
+    detection = detection_model.predict(Xa, Xs)
+    if detection:
+        # Predict class
+        classifer = classifer_model.predict(Xa, Xs)
+        target_class = np.argmax(classifer)
+    else:
+        target_class = None
+
+    # Get gps information
+    gps_data = get_position_from_signature_file(
+            run_info,
+            emplacement_info,
+            sig_info,
+            filename_acoustic,
+            start_datetime,
+            end_datetime,
+            gps_log_path=gps_log_path,
+            )
+    # Return last GPS distance from end time
+    distance = gps_data['distance'].iloc[-1]
+    
+    return detection, target_class, distance
 
 def process_frame(
         start_time: datetime,
